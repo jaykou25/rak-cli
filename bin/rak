@@ -1,0 +1,51 @@
+#!/usr/bin/env node
+
+const yargs = require("yargs/yargs");
+const { hideBin } = require("yargs/helpers");
+
+yargs(hideBin(process.argv))
+  .command(
+    "g <type>",
+    "在当前目录下或指定目录下生成一个指定的文件",
+    (yargs) => {
+      return yargs
+        .command(
+          "cols",
+          "生成 schema 数组",
+          () => {},
+          () => {
+            console.log("正在生成 cols");
+          }
+        )
+        .command(
+          "table",
+          "生成一个表格",
+          () => {},
+          () => {
+            console.log("正在生成表格");
+          }
+        );
+    },
+    (argv) => {
+      console.log("正在处理", argv);
+    }
+  )
+  .check((argv) => {
+    /**
+     * 检查命令, 因为涉及到子命令, 所以检查的方法有点不一样
+     *
+     * _: [ 'g' ] 通过了一级命令
+     * type: 'xx'
+     *
+     * _: ['g', 'cols'] 通过了二级命令
+     */
+    if (
+      argv._.length === 1 &&
+      (argv.type !== "cols" || argv.type !== "table")
+    ) {
+      throw new Error(`${argv.type} 类型不支持`);
+    }
+    return true;
+  }, true)
+  .help()
+  .parse();

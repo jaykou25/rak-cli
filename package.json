@@ -1,0 +1,26 @@
+{
+  "name": "rak-cli",
+  "version": "0.0.1",
+  "description": "为 react-admin-kit 组件库设计的命令行工具, 用于快速的生成 schema 数组, table, form 等页面. 目前未正式发版, 仅用于占位, 请勿使用.",
+  "bin": {
+    "rak": "bin/rak"
+  },
+  "main": "index.js",
+  "scripts": {
+    "hi": "node bin/rak",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rak",
+    "rakjs",
+    "react-admin-kit",
+    "schema",
+    "pro-table",
+    "pro-form"
+  ],
+  "author": "jay.kou",
+  "license": "ISC",
+  "devDependencies": {
+    "yargs": "^17.7.2"
+  }
+}
